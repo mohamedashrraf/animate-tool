@@ -34,6 +34,7 @@ const slideConfig = [
   }
 ];
 
+
 function buildDots() {
   for (let i = 0; i < total; i++) {
     const d = document.createElement('div');
@@ -61,59 +62,31 @@ function renderButtonsFor(idx) {
 }
 
 function updateActive() {
+  // إزالة وتفعيل الكلاس active لكل سلايد
   slides.forEach((s, i) => s.classList.toggle('active', i === current));
+
+  // تحريك السلايد الحالية إلى منتصف العرض
   slidesEl.style.transform = `translateX(${-current * 100}%)`;
-  Array.from(dotsEl.children).forEach((d, i) => d.classList.toggle('active', i === current));
+
+  // تحديث النقاط
+  Array.from(dotsEl.children).forEach((d, i) =>
+    d.classList.toggle('active', i === current)
+  );
+
+  // عرض الأزرار والعنوان والوصف المناسبين
   renderButtonsFor(current);
 }
+
 
 function goTo(i) {
   current = (i + total) % total;
   updateActive();
-  resetAutoplay();
 }
 
+// الأسهم
 document.getElementById('prev').addEventListener('click', () => goTo(current - 1));
 document.getElementById('next').addEventListener('click', () => goTo(current + 1));
 
-function startAutoplay() {
-  if (!autoplay) return;
-  stopAutoplay();
-  timer = setInterval(() => goTo(current + 1), autoplayDelay);
-}
-function stopAutoplay() {
-  if (timer) clearInterval(timer);
-  timer = null;
-}
-function resetAutoplay() {
-  stopAutoplay();
-  startAutoplay();
-}
-
-document.querySelector('.carousel').addEventListener('mouseenter', () => { autoplay = false; stopAutoplay(); });
-document.querySelector('.carousel').addEventListener('mouseleave', () => { autoplay = true; startAutoplay(); });
-
-window.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft') goTo(current - 1);
-  if (e.key === 'ArrowRight') goTo(current + 1);
-});
-
+// المؤشرات
 buildDots();
 updateActive();
-startAutoplay();
-
-// سحب باللمس
-let startX = 0, isDown = false;
-slidesEl.addEventListener('pointerdown', e => {
-  startX = e.clientX;
-  isDown = true;
-  slidesEl.setPointerCapture(e.pointerId);
-});
-slidesEl.addEventListener('pointerup', e => {
-  if (!isDown) return;
-  isDown = false;
-  const diff = e.clientX - startX;
-  if (diff > 40) goTo(current - 1);
-  else if (diff < -40) goTo(current + 1);
-  slidesEl.releasePointerCapture(e.pointerId);
-});
