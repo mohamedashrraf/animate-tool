@@ -13,13 +13,18 @@
     },
     {
       "src": "assets/02.png",
-      "caption": "educational content builder • free software • limited interactivity • small community • weak mobile support",
-      "source": "https://exelearning.net/en/"
+      "caption": "Interactive activity built with JS • GSAP animation • responsive design • suitable for one-page learning activity",
+      "source": "https://pronoun-gsap.vercel.app/"
     },
     {
       "src": "assets/03.png",
-      "caption": "interactive activity built with JS • GSAP animation • responsive design • suitable for one-page learning activity",
-      "source": "https://memory-game-by-gsap.vercel.app/"
+      "caption": "Simple interactive quiz created with Adobe Captivate • supports SCORM and LMS integration • template-based design",
+      "source": ""
+    },
+    {
+      "src": "assets/04.png",
+      "caption": "Interactive animation built with Adobe Animate CC • HTML5 Canvas export • supports timeline-based interactivity",
+      "source": "https://mohamedashrraf.github.io/choose-pronouns/"
     }
   ]
 }
