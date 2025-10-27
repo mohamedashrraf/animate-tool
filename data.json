@@ -1,0 +1,25 @@
+{
+  "title": "Dynamic interactive learning activities",
+  "lang": "en",
+  "slides": [
+    {
+      "src": "assets/01.png",
+      "caption": "Construct 3 based activities • interactive pronoun and grammar games • reusable templates",
+      "source": [
+        "https://pronoun-construct.vercel.app/",
+        "https://game-construct.vercel.app/"
+      ],
+      "sourceLabel": ["Pronoun Game", "Mini Game"]
+    },
+    {
+      "src": "assets/02.png",
+      "caption": "educational content builder • free software • limited interactivity • small community • weak mobile support",
+      "source": "https://exelearning.net/en/"
+    },
+    {
+      "src": "assets/03.png",
+      "caption": "interactive activity built with JS • GSAP animation • responsive design • suitable for one-page learning activity",
+      "source": "https://memory-game-by-gsap.vercel.app/"
+    }
+  ]
+}

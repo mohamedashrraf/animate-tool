@@ -3,52 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Carousel مع أزرار زيارة</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Presentation</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <div class="carousel" aria-roledescription="carousel">
-        <div class="slides" id="slides">
-          <div class="slide" data-index="0">
-            <img src="img/01.png" alt="صورة 1">
-          </div>
-          <div class="slide" data-index="1">
-            <img src="img/02.png" alt="صورة 2">
-          </div>
-          <div class="slide" data-index="2">
-            <img src="img/03.png" alt="صورة 3">
-          </div>
-        </div>
-
-        <!-- الأسهم -->
-        <button class="arrow left" id="prev" aria-label="السابق">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M15 6 L9 12 L15 18" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-        <button class="arrow right" id="next" aria-label="التالي">
-          <svg viewBox="0 0 24 24" fill="none">
-            <path d="M9 6 L15 12 L9 18" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </button>
-
-        <!-- النص والأزرار -->
-        <div class="overlay">
-          <div class="info">
-            <h2 id="title">مرحباً — استعرض الصور</h2>
-            <p id="desc">اضغط Visit لزيارة المشروع المرتبط بالصورة.</p>
-          </div>
-          <div class="buttons" id="actionButtons"></div>
-        </div>
-
-        <!-- النقاط -->
-        <div class="dots" id="dots"></div>
-      </div>
+  <header class="topbar">
+    <div class="left">
+      <button id="prevBtn" class="nav-btn">◀</button>
+      <button id="nextBtn" class="nav-btn">▶</button>
     </div>
-  </div>
+    <h1 id="title">Presentation</h1>
+    <div class="right">
+      <span id="slideCounter">0 / 0</span>
+      <button id="fullscreenBtn" class="nav-btn">⤢</button>
+    </div>
+  </header>
 
-  <script src="main.js"></script>
+  <main class="stage">
+    <div id="slide" class="slide"></div>
+    <div class="caption">
+      <div id="caption" class="caption-text"></div>
+      <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noopener" style="display:none;">مصدر الصورة</a>
+    </div>
+  </main>
+
+  <footer class="thumbs" id="thumbs">
+    <!-- مصغرات الشرائح تُنشأ ديناميكياً -->
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

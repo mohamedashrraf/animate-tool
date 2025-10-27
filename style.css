@@ -1,169 +1,159 @@
 :root {
   --bg: #0f1724;
-  --card: #0b1220;
-  --accent: #06b6d4;
-  --glass: rgba(255, 255, 255, 0.06);
+  --card: #ffffff;
+  --accent: #0ea5a4;
+  --muted: #cbd5e1;
 }
-
 * { box-sizing: border-box; }
-
-body {
+html, body {
+  height: 100%;
   margin: 0;
-  font-family: system-ui, Segoe UI, Roboto, "Noto Naskh Arabic", Tahoma, Arial;
-  background: linear-gradient(180deg, #071028 0%, #122b57 60%), var(--bg);
-  color: #eef2f7;
+  font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+body {
+  background: linear-gradient(180deg, #071029 0%, #0f1724 60%);
+  color: var(--muted);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
   min-height: 100vh;
-  padding: 24px;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-}
-
-.card {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border-radius: 20px;
-  padding: 18px;
-  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-  overflow: hidden;
-  animation: floatIn .9s cubic-bezier(.2,.9,.3,1);
-}
-
-.carousel {
-  position: relative;
-  overflow: hidden;
-  border-radius: 12px;
-  height: 820px; /* ← كان 420px، الآن الضعف */
-  background: var(--card);
+/* topbar */
+.topbar {
   display: flex;
   align-items: center;
-  justify-content: center;
-}
-
-.slides {
-  display: flex;
-  height: 100%;
-  transition: transform 700ms cubic-bezier(.2,.9,.3,1);
-}
-
-.slide {
-  min-width: 100%;
-  height: 100%;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slide img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  transform: scale(1);
-  transition: transform 1200ms ease;
-}
-
-.slide.active img { transform: scale(1.04); }
-
-.overlay {
-  position: absolute;
-  left: 18px;
-  bottom: 22px;
-  right: 18px;
-  display: flex;
   justify-content: space-between;
-  align-items: flex-end;
   gap: 12px;
-}
-
-.info {
-  backdrop-filter: blur(6px);
-  background: linear-gradient(90deg, rgba(0,0,0,0.35), rgba(255,255,255,0.02));
-  padding: 12px 16px;
-  border-radius: 12px;
-}
-
-.info h2 { margin: 0; font-size: 22px; }
-.info p { margin: 4px 0 0; font-size: 15px; opacity: 0.85; }
-
-.buttons { display: flex; gap: 10px; }
-
-.btn {
   padding: 12px 18px;
-  border-radius: 10px;
-  border: 0;
-  cursor: pointer;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent);
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  color: #fff;
   font-weight: 600;
-  background: var(--accent);
-  color: #06202a;
-  box-shadow: 0 6px 18px rgba(6,182,212,0.14);
-  transition: transform .18s ease;
+  text-align: center;
+  flex: 1;
 }
-
-.btn.secondary {
+.nav-btn {
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #dff6fb;
-}
-
-.btn:active { transform: translateY(2px); }
-
-.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transform: rotateY(180deg);
-  background: var(--glass);
-  border-radius: 10px;
-  padding: 10px;
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
   cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.03);
 }
 
-.arrow.left { right: 12px; }
-.arrow.right { left: 12px; }
-.arrow svg { width: 28px; height: 28px; display: block; }
+/* main stage */
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  flex: 1;
+}
+.slide {
+  width: 100%;
+  max-width: 1100px;
+  aspect-ratio: 16/9;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transform-origin: center center;
+}
 
-.dots {
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(50%);
+/* caption */
+.caption {
+  margin-top: 12px;
+  color: var(--muted);
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  min-height: 1.6em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.source-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.source-link {
+  display: inline-block;
+  padding: 8px 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--muted);
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all .15s ease;
+}
+.source-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+
+/* thumbnails footer */
+.thumbs {
   display: flex;
   gap: 10px;
+  padding: 12px 18px;
+  overflow-x: auto;
+  background: linear-gradient(180deg, transparent, rgba(255,255,255,0.02));
 }
-
-.dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.12);
+.thumb {
+  width: 110px;
+  height: 66px;
+  border-radius: 6px;
+  overflow: hidden;
+  flex: 0 0 auto;
+  border: 2px solid transparent;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.4);
+}
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform-origin: center center;
+}
+.thumb.active {
+  outline: 3px solid var(--accent);
+  transform: scale(1.03);
 }
 
-.dot.active {
-  background: var(--accent);
-  transform: scale(1.2);
+/* responsive */
+@media (max-width:900px){
+  .thumb{width:96px;height:56px}
+  .slide{max-width:900px}
 }
-
-@media (max-width: 700px) {
-  .carousel { height: 600px; } /* لتناسب الموبايل */
-  .overlay { flex-direction: column; align-items: flex-start; }
-  .info h2 { font-size: 18px; }
-  .btn { padding: 10px 12px; font-size: 14px; }
+@media (max-width:600px){
+  .topbar{padding:10px}
+  .topbar h1{font-size:1rem}
+  .thumb{width:74px;height:46px}
+  .slide{max-width:100%;border-radius:10px}
 }
-
-@keyframes floatIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: none; }
-}
-
-
-
-
