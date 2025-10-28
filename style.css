@@ -11,7 +11,7 @@ html, body {
   font-family: "Cairo", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 body {
-  background: linear-gradient(180deg, #071029 0%, #0f1724 60%);
+  background: linear-gradient(180deg, #071029 0%, #174083 60%);
   color: var(--muted);
   display: flex;
   flex-direction: column;
